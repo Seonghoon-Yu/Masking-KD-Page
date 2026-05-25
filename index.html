@@ -291,11 +291,10 @@
 
             <div class="content is-size-5">
               <p>
-                <span class="method-name">Masking-KD</span> is a think-answer distillation framework built on reverse
-                KL divergence. When distilling long reasoning traces, accumulated prefixes become so informative that
-                the student can imitate the teacher from a few exposed textual cues alone &mdash; reducing its need to
-                look at the image and causing <em>visual forgetting</em>. Masking-KD removes that shortcut. Two
-                ingredients construct the mask:
+                <span class="method-name">Masking-KD</span> is a think-answer distillation framework that masks reasoning-prefix of the student to exploit more visual evidence as an alternative to missing textual cues.
+                When distilling long reasoning traces, accumulated prefixes become informative to easily imitate the teacher's trace from a few exposed textual cues alone &mdash; reducing its need to
+                look at the image and causing <em>visual forgetting</em>. Masking-KD removes that this textual shortcut via reasoning-preifx masking. 
+                Reasoning-prefix mask is constructed via two strategies:
               </p>
               <ul class="key-points">
                 <li>
