@@ -291,10 +291,10 @@
 
             <div class="content is-size-5">
               <p>
-                <span class="method-name">Masking-KD</span> is a think-answer distillation framework that masks reasoning-prefix of the student to exploit more visual evidence as an alternative to missing textual cues.
-                When distilling long reasoning traces, accumulated prefixes become informative to easily imitate the teacher's trace from a few exposed textual cues alone &mdash; reducing its need to
+                <span class="method-name">Masking-KD</span> is a think-answer distillation framework that masks salient reasoning prefixes of the stuednt during distillation, forcing the student to rely more on visual evidence instead of missing textual cues.
+                When distilling long reasoning traces, accumulated prefixes can become highly informative, allowing the student to imitate the teacher's reasoning trace easily from a few exposed textual cues &mdash; This reduce the student's need to attend to the image.
                 look at the image and causing <em>visual forgetting</em>. Masking-KD removes that this textual shortcut via reasoning-preifx masking. 
-                Reasoning-prefix mask is constructed via two strategies:
+                To address this, we construct salient reasoning-prefix mask via two strategies below and integrated with standard causal mask, preventing the student from accessing both salient reasoning prefixes and future tokens during distillation:
               </p>
               <ul class="key-points">
                 <li>
@@ -337,7 +337,11 @@
             <tbody>
               <tr class="group-row"><td colspan="9">~8B Models</td></tr>
               <tr><td>Qwen3-VL-8B-Thinking</td><td>54.58</td><td>65.20</td><td>66.15</td><td>42.55</td><td>63.81</td><td>43.40</td><td>39.83</td><td>53.65</td></tr>
-              <tr class="ours"><td>Masking-KD-8B (ours)</td><td>58.24</td><td>67.10</td><td>71.72</td><td>49.95</td><td>67.84</td><td>48.10</td><td>43.47</td><td>58.06</td></tr>
+              <tr class="ours">
+  <td><span style="font-size: 0.85em; font-style: italic;">self-distill</span> Masking-KD-8B (ours)</td>
+  <td>58.24</td><td>67.10</td><td>71.72</td><td>49.95</td>
+  <td>67.84</td><td>48.10</td><td>43.47</td><td>58.06</td>
+</tr>
               <tr class="group-row"><td colspan="9">~4B Models</td></tr>
               <tr><td>Qwen3-VL-4B-Thinking</td><td>43.93</td><td>62.60</td><td>49.37</td><td>31.55</td><td>49.86</td><td>39.37</td><td>32.08</td><td>44.11</td></tr>
               <tr class="ours"><td>Masking-KD-4B (ours)</td><td>52.58</td><td>66.50</td><td>71.03</td><td>51.00</td><td>62.66</td><td>52.35</td><td>40.52</td><td>56.66</td></tr>
